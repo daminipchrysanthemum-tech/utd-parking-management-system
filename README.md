@@ -55,16 +55,16 @@ Managing campus parking at scale requires more than spreadsheets. This system mo
 
 ## 🔍 Sample Queries
 
--- Check real-time parking availability by zone
+Check real-time parking availability by zone
 SELECT * FROM parking_availability_view WHERE Available_Spots > 0;
 
--- Register a new vehicle and issue a permit in one call
+Register a new vehicle and issue a permit in one call
 CALL add_new_vehicle_and_permit(1001, 'TX12345', 'Toyota Camry', 'Sedan', 'Student');
 
--- Issue a violation by license plate
+Issue a violation by license plate
 CALL process_violation('TX00001', 'Parked in unauthorized zone', 50.00);
 
--- View all active permits with user info
+View all active permits with user info
 SELECT * FROM active_permits_view;
 
 ---
@@ -77,7 +77,7 @@ SELECT * FROM active_permits_view;
 | Permit validation | < 0.1s |
 | Vehicle registration | < 0.2s |
 | Parking availability |	< 0.5s |
-| Violation reports	< 0.8s	
+| Violation reports |	< 0.8s	|
 | Statistical analysis |	< 1.0s |
 | 100 concurrent users |	< 2s avg |
 
@@ -114,6 +114,7 @@ utd-parking-management-system/
 Group 5 — ITSS 4380.001 Advanced Database Management, Spring 2025
 
 | Member | Role | 
+|--------|------|
 | Anh Pham | 	Documentation Lead |
 | Farell Febriano |	Design Consistency Lead	|
 | Neha Paladugu |	Requirements Lead	|
