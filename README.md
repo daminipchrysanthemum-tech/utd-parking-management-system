@@ -2,6 +2,11 @@
 
 A full-cycle relational database project built for the University of Texas at Dallas campus parking infrastructure. Designed and implemented across five phases — from schema design to NoSQL migration — this system handles real-world parking operations including permit management, violation tracking, EV charging, and payment processing.
 
+[insert.py](https://github.com/user-attachments/files/27040034/insert.py)
+[get.py](https://github.com/user-attachments/files/27040033/get.py)
+[update.py](https://github.com/user-attachments/files/27040032/update.py)
+[Schema_Creation.sql](https://github.com/user-attachments/files/27040031/Schema_Creation.sql)
+
 ---
 
 ## 📌 Overview
