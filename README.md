@@ -5,14 +5,15 @@ A full-cycle relational database project built for the University of Texas at Da
 ---
 
 ## 📌 Overview
+
 Managing campus parking at scale requires more than spreadsheets. This system models the full lifecycle of a UTD parking operation: who's parked where, under what permit, and what happens when rules are broken. Built with MySQL and validated against real constraint logic, then extended into MongoDB for document-based access patterns.
 
 ---
 
 ## 🗂️ Project Phases
 
-| Phase        | Description                                              |
-|-------------------|------------------------------------------------------|
+| Phase        | Description |
+|--------------|-------------|
 | I | ERD design, relational schema, normalization planning |
 | II | SQL implementation — tables, constraints, data population |
 | III | Testing — CRUD validation, constraint checks, performance benchmarks |
@@ -25,8 +26,8 @@ Managing campus parking at scale requires more than spreadsheets. This system mo
 
 10 normalized tables (3NF):
 
-| Table        | Purpose                                              |
-|-------------------|------------------------------------------------------|
+| Table | Purpose |
+|-------|---------|
 | users | Students, Faculty, Staff, Visitors with UTD email enforcement |
 | vehicle | Registered vehicles with type validation |
 | permit | Active/Expired/Suspended permits with date constraints |
@@ -53,6 +54,7 @@ Managing campus parking at scale requires more than spreadsheets. This system mo
 ---
 
 ## 🔍 Sample Queries
+
 -- Check real-time parking availability by zone
 SELECT * FROM parking_availability_view WHERE Available_Spots > 0;
 
@@ -66,22 +68,31 @@ CALL process_violation('TX00001', 'Parked in unauthorized zone', 50.00);
 SELECT * FROM active_permits_view;
 
 ---
-📊 Performance Benchmarks
-Query Type Response Time
-User lookup	< 0.1s	
-Permit validation	< 0.1s	
-Vehicle registration	< 0.2s	
-Parking availability	< 0.5s	
-Violation reports	< 0.8s	
-Statistical analysis	< 1.0s	
-100 concurrent users	< 2s avg	
-🛠️ Tech Stack
+
+## 📊 Performance Benchmarks
+
+| Query Type | Response Time |
+|------------| --------------|
+| User lookup |	< 0.1s |
+| Permit validation | < 0.1s |
+| Vehicle registration | < 0.2s |
+| Parking availability |	< 0.5s |
+| Violation reports	< 0.8s	
+| Statistical analysis |	< 1.0s |
+| 100 concurrent users |	< 2s avg |
+
+---
+
+## 🛠️ Tech Stack
+
 MySQL — core relational database
 MySQL Workbench — schema design and query execution
 MongoDB + PyMongo — NoSQL document layer
 Python 3 — NoSQL migration scripts
 Lucidchart — ERD diagram design
 
+---
+ 
 ## 📁 Repository Structure
 
 ```
@@ -98,13 +109,14 @@ utd-parking-management-system/
 
 ```
 
-👥 Team
+## 👥 Team
+
 Group 5 — ITSS 4380.001 Advanced Database Management, Spring 2025
 
-MemberRole
-Anh Pham	Documentation Lead	
-Farell Febriano	Design Consistency Lead	
-Neha Paladugu	Requirements Lead	
-Shubham Ralli	Schema Design Lead	
-Damini Putti	Deliverables Lead	
-Hibah Yaseen	Quality Assessor	
+| Member | Role | 
+| Anh Pham | 	Documentation Lead |
+| Farell Febriano |	Design Consistency Lead	|
+| Neha Paladugu |	Requirements Lead	|
+| Shubham Ralli |	Schema Design Lead |
+| Damini Putti |	Deliverables Lead	|
+| Hibah Yaseen |	Quality Assessor |
