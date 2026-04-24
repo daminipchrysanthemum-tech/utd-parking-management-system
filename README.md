@@ -1,4 +1,4 @@
-## 🅿️ UTD Parking Management System
+# 🅿️ UTD Parking Management System
 
 A full-cycle relational database project built for the University of Texas at Dallas campus parking infrastructure. Designed and implemented across five phases — from schema design to NoSQL migration — this system handles real-world parking operations including permit management, violation tracking, EV charging, and payment processing.
 
@@ -12,13 +12,13 @@ Managing campus parking at scale requires more than spreadsheets. This system mo
 
 ## 🗂️ Project Phases
 
-| Phase        | Description |
-|--------------|-------------|
-| I | ERD design, relational schema, normalization planning |
-| II | SQL implementation — tables, constraints, data population |
-| III | Testing — CRUD validation, constraint checks, performance benchmarks |
-| IV| NoSQL migration to MongoDB (Insert, Get, Update via PyMongo) |
-| V | Documentation, stored procedures, user guide |
+| Phase | Description |
+|-------|-------------|
+| I     | ERD design, relational schema, normalization planning |
+| II    | SQL implementation — tables, constraints, data population |
+| III   | Testing — CRUD validation, constraint checks, performance benchmarks |
+| IV    | NoSQL migration to MongoDB (Insert, Get, Update via PyMongo) |
+| V     | Documentation, stored procedures, user guide |
 
 ---
 
@@ -28,81 +28,81 @@ Managing campus parking at scale requires more than spreadsheets. This system mo
 
 | Table | Purpose |
 |-------|---------|
-| users | Students, Faculty, Staff, Visitors with UTD email enforcement |
-| vehicle | Registered vehicles with type validation |
-| permit | Active/Expired/Suspended permits with date constraints |
-| parking_area | Zone-based capacity tracking |
-| parking_spot | Individual spots with color-coded permit types|
-| temporary_permit | Short-term access permits |
-| parking_violation | Citations with fine tracking |
-| appeal | Violation dispute workflow |
-| ev_charging_station | EV spot availability and status |
-| transaction | Payment records per permit |
+| `users` | Students, Faculty, Staff, Visitors with UTD email enforcement |
+| `vehicle` | Registered vehicles with type validation |
+| `permit` | Active/Expired/Suspended permits with date constraints |
+| `parking_area` | Zone-based capacity tracking |
+| `parking_spot` | Individual spots with color-coded permit types |
+| `temporary_permit` | Short-term access permits |
+| `parking_violation` | Citations with fine tracking |
+| `appeal` | Violation dispute workflow |
+| `ev_charging_station` | EV spot availability and status |
+| `transaction` | Payment records per permit |
 
 ---
 
 ## ⚙️ Key Features
 
-- Constraint enforcement — UTD email domain (@utdallas.edu), vehicle types, permit status values, fine amounts
-- Cascading deletes — removing a user automatically cleans up their vehicles, permits, and violations
-- 13+ indexes — strategically placed on foreign keys and frequently filtered columns
-- 5 views — active permits, parking availability by zone, violation statistics, EV station status, recent transactions
-- Stored procedures — add_new_vehicle_and_permit, process_violation, plus 9 automated data population procedures
-- Role-based access control — parking_admin, parking_user, and parking_officer roles with scoped permissions
-- MongoDB layer — JSON document schema mirroring relational data; Insert, Get, and Update operations via PyMongo
+- **Constraint enforcement** — UTD email domain (@utdallas.edu), vehicle types, permit status values, fine amounts
+- **Cascading deletes** — removing a user automatically cleans up their vehicles, permits, and violations
+- **13+ indexes** — strategically placed on foreign keys and frequently filtered columns
+- **5 views** — active permits, parking availability by zone, violation statistics, EV station status, recent transactions
+- **Stored procedures** — `add_new_vehicle_and_permit`, `process_violation`, plus 9 automated data population procedures
+- **Role-based access control** — `parking_admin`, `parking_user`, and `parking_officer` roles with scoped permissions
+- **MongoDB layer** — JSON document schema mirroring relational data; Insert, Get, and Update operations via PyMongo
 
 ---
 
 ## 🔍 Sample Queries
 
-- Check real-time parking availability by zone
+```sql
+-- Check real-time parking availability by zone
 SELECT * FROM parking_availability_view WHERE Available_Spots > 0;
 
-- Register a new vehicle and issue a permit in one call
+-- Register a new vehicle and issue a permit in one call
 CALL add_new_vehicle_and_permit(1001, 'TX12345', 'Toyota Camry', 'Sedan', 'Student');
 
-- Issue a violation by license plate
+-- Issue a violation by license plate
 CALL process_violation('TX00001', 'Parked in unauthorized zone', 50.00);
 
-- View all active permits with user info
+-- View all active permits with user info
 SELECT * FROM active_permits_view;
+```
 
 ---
 
 ## 📊 Performance Benchmarks
 
 | Query Type | Response Time |
-|------------| --------------|
-| User lookup |	< 0.1s |
+|------------|--------------|
+| User lookup | < 0.1s |
 | Permit validation | < 0.1s |
 | Vehicle registration | < 0.2s |
-| Parking availability |	< 0.5s |
-| Violation reports |	< 0.8s	|
-| Statistical analysis |	< 1.0s |
-| 100 concurrent users |	< 2s avg |
+| Parking availability | < 0.5s |
+| Violation reports | < 0.8s |
+| Statistical analysis | < 1.0s |
+| 100 concurrent users | < 2s avg |
 
 ---
 
 ## 🚀 Getting Started
 
-MySQL — run the full schema:
+1. Run the schema to create and populate the database:
+   ```sql
+   mysql -u root -p < schema/Schema_Creation.sql
+   ```
 
-bash
-mysql -u root -p < schema/Schema_Creation.sql
+2. To use the MongoDB layer, install PyMongo and run the scripts:
+   ```bash
+   pip install pymongo
 
-This creates the database, all tables, indexes, views, stored procedures, and populates 100 sample records.
-
-
-MongoDB — run the NoSQL layer:
-
-bashpip install pymongo
-
-python nosql/insert.py                             # bulk load JSON data into MongoDB
-python nosql/get.py <UTD_Net_ID>                   # fetch a user document
-python nosql/update.py <UTD_Net_ID> <new_email>    # update a user's email
-
+   python nosql/insert.py                              # load data from example_data.json
+   python nosql/get.py <UTD_Net_ID>                    # fetch a user document
+   python nosql/update.py <UTD_Net_ID> <new_email>     # update a user's email
+   ```
+   
 ---
- 
+
 ## 📁 Repository Structure
 
 ```
@@ -114,18 +114,20 @@ utd-parking-management-system/
 │   ├── get.py                    # Retrieve user document by UTD_Net_ID
 │   └── update.py                 # Update user email by UTD_Net_ID
 └── README.md
-
 ```
+
+---
 
 ## 👥 Team
 
 Group 5 — ITSS 4380.001 Advanced Database Management, Spring 2025
 
-| Member | Role | 
+| Member | Role |
 |--------|------|
-| Anh Pham | 	Documentation Lead |
-| Farell Febriano |	Design Consistency Lead	|
-| Neha Paladugu |	Requirements Lead	|
-| Shubham Ralli |	Schema Design Lead |
-| Damini Putti |	Deliverables Lead	|
-| Hibah Yaseen |	Quality Assessor |
+| Anh Pham | Documentation Lead |
+| Farell Febriano | Design Consistency Lead |
+| Neha Paladugu | Requirements Lead |
+| Shubham Ralli | Schema Design Lead |
+| Damini Putti | Deliverables Lead |
+| Hibah Yaseen | Quality Assessor |
+
