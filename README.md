@@ -55,20 +55,16 @@ Managing campus parking at scale requires more than spreadsheets. This system mo
 
 ## 🔍 Sample Queries
 
-Check real-time parking availability by zone
-
+-- Check real-time parking availability by zone
 SELECT * FROM parking_availability_view WHERE Available_Spots > 0;
 
-Register a new vehicle and issue a permit in one call
-
+-- Register a new vehicle and issue a permit in one call
 CALL add_new_vehicle_and_permit(1001, 'TX12345', 'Toyota Camry', 'Sedan', 'Student');
 
-Issue a violation by license plate
-
+-- Issue a violation by license plate
 CALL process_violation('TX00001', 'Parked in unauthorized zone', 50.00);
 
-View all active permits with user info
-
+-- View all active permits with user info
 SELECT * FROM active_permits_view;
 
 ---
