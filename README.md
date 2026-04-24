@@ -83,13 +83,21 @@ SELECT * FROM active_permits_view;
 
 ---
 
-## 🛠️ Tech Stack
+## 🚀 Getting Started
 
-- MySQL — core relational database
-- MySQL Workbench — schema design and query execution
-- MongoDB + PyMongo — NoSQL document layer
-- Python 3 — NoSQL migration scripts
-- Lucidchart — ERD diagram design
+MySQL — run the full schema:
+bash
+mysql -u root -p < schema/Schema_Creation.sql
+
+This creates the database, all tables, indexes, views, stored procedures, and populates 100 sample records.
+
+MongoDB — run the NoSQL layer:
+
+bashpip install pymongo
+
+python nosql/insert.py                             # bulk load JSON data into MongoDB
+python nosql/get.py <UTD_Net_ID>                   # fetch a user document
+python nosql/update.py <UTD_Net_ID> <new_email>    # update a user's email
 
 ---
  
@@ -103,8 +111,6 @@ utd-parking-management-system/
 │   ├── insert.py                 # Bulk insert JSON data into MongoDB
 │   ├── get.py                    # Retrieve user document by UTD_Net_ID
 │   └── update.py                 # Update user email by UTD_Net_ID
-├── docs/
-│   └── Project_Report.pdf        # Full project report (Phases I–V)
 └── README.md
 
 ```
